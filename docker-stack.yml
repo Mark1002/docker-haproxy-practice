@@ -5,6 +5,7 @@ services:
     image: simple_web
     deploy:
       replicas: 3
+      endpoint_mode: dnsrr 
     networks:
       - haproxy-practice
   haproxy:
