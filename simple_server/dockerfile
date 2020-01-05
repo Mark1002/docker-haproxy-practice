@@ -1,0 +1,6 @@
+FROM python:3.6.9-slim-buster
+WORKDIR /simple_server
+COPY . /simple_server
+EXPOSE 8000
+ENV TZ=Asia/Taipei
+CMD ["python", "simple_http_server.py"]

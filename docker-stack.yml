@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  web:
+    image: simple_web
+    deploy:
+      replicas: 3
+    networks:
+      - haproxy-practice
+  haproxy:
+    image: haproxy:2.1
+    depends_on:
+      - web
+    volumes:
+      - "./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg"
+    ports:
+      - "48686:8000"
+    networks:
+      - haproxy-practice  
+
+networks:
+  haproxy-practice:
+    driver: overlay
